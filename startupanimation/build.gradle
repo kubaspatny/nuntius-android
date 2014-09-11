@@ -1,0 +1,30 @@
+apply plugin: 'android'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.1.0"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 19
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.github.castorflex.smoothprogressbar:library:0.5.2'
+    compile 'com.android.support:support-v4:19.+'
+    compile 'com.github.dmytrodanylyk.android-process-button:library:1.0.1'
+    compile 'com.jakewharton:butterknife:5.1.2'
+    compile 'com.google.android.gms:play-services:5.0.77'
+    compile 'com.google.code.gson:gson:2.3'
+    compile 'joda-time:joda-time:2.4'
+}

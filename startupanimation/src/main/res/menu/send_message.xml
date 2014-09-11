@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.kubaspatny.startupanimation.SendMessageActivity" >
+    
+    <item android:id="@+id/action_checkGooglePlayServices"
+        android:title="@string/action_checkGooglePlayServices"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_action_refresh"
+        android:showAsAction="always"/>
+</menu>
