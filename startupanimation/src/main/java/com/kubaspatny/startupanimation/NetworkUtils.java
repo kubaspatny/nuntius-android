@@ -1,5 +1,9 @@
 package com.kubaspatny.startupanimation;
 
+import android.app.Activity;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import org.apache.http.NameValuePair;
@@ -81,6 +85,17 @@ public class NetworkUtils {
 
     }
 
+    public static boolean checkConnectivity(Context context){
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Activity.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+        if(networkInfo != null && networkInfo.isConnected()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private static String getQueryParameters(List<NameValuePair> params) throws UnsupportedEncodingException {
         StringBuilder result = new StringBuilder();
         boolean first = true;
@@ -103,34 +118,6 @@ public class NetworkUtils {
     private static String inputStreamToString(InputStream is) {
         Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "";
-    }
-
-}
-
-class PostMessageHolder {
-
-    private URL url;
-    private List<NameValuePair> parms;
-
-    public PostMessageHolder(URL url, List<NameValuePair> parms) {
-        this.url = url;
-        this.parms = parms;
-    }
-
-    public URL getUrl() {
-        return url;
-    }
-
-    public void setUrl(URL url) {
-        this.url = url;
-    }
-
-    public List<NameValuePair> getParms() {
-        return parms;
-    }
-
-    public void setParms(List<NameValuePair> parms) {
-        this.parms = parms;
     }
 
 }

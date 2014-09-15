@@ -1,12 +1,16 @@
 package com.kubaspatny.startupanimation;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -52,7 +56,7 @@ public class GcmIntentService extends IntentService {
 
             } else if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType)) { // If it's a regular GCM message, do some work.
 
-                sendNotification("Received: " + extras.getString("message"));
+                sendNotification(extras.getString("message"));
                 Log.i(DEBUG_TAG, "Received: " + extras.toString());
 
             }
@@ -68,17 +72,30 @@ public class GcmIntentService extends IntentService {
     private void sendNotification(String msg) {
         mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, SendMessageActivity.class), 0);
+        //PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, SendMessageActivity.class), 0);
 
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_launcher)
-                        .setContentTitle("GCM Notification")
+                        .setContentTitle("New message")
                         .setStyle(new NotificationCompat.BigTextStyle()
                                 .bigText(msg))
+                        .setAutoCancel(true)
                         .setContentText(msg);
 
-        mBuilder.setContentIntent(contentIntent);
-        mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+        Intent resultIntent = new Intent(this, SendMessageActivity.class);
+
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addNextIntent(resultIntent);
+
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        mBuilder.setContentIntent(resultPendingIntent);
+
+        Notification notification = mBuilder.build();
+        notification.defaults|= Notification.DEFAULT_SOUND;
+        notification.defaults|= Notification.DEFAULT_LIGHTS;
+        notification.defaults|= Notification.DEFAULT_VIBRATE;
+
+        mNotificationManager.notify(NOTIFICATION_ID, notification);
     }
 }

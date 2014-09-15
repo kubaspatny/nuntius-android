@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.kubaspatny.startupanimation.activity.DrawerActivity;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -72,7 +73,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         if(!getRegistrationId().isEmpty()){
-            Intent i = new Intent(MainActivity.this, SendMessageActivity.class);
+            //Intent i = new Intent(MainActivity.this, SendMessageActivity.class);
+            Intent i = new Intent(MainActivity.this, DrawerActivity.class);
             startActivity(i);
         }
 
@@ -160,7 +162,8 @@ public class MainActivity extends Activity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SendMessageActivity.class);
+                //Intent i = new Intent(MainActivity.this, SendMessageActivity.class);
+                Intent i = new Intent(MainActivity.this, DrawerActivity.class);
                 startActivity(i);
             }
         });

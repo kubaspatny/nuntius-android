@@ -18,6 +18,8 @@
     <item name="nuntius_main" type="color">#2C3E50</item>
     <item name="nuntius_main_dark" type="color">#ff202f40</item>
     <item name="nuntius_main_shade" type="color">#ff435768</item>
+    <item name="nuntius_main_shade_lighter" type="color">#ff5d7283</item>
+    <item name="nuntius_main_shade_lighter2" type="color">#ff809bad</item>
 
 
 </resources>
