@@ -4,16 +4,28 @@ import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.google.gson.Gson;
+import com.kubaspatny.startupanimation.JSONUtil.Message;
 import com.kubaspatny.startupanimation.R;
 import com.kubaspatny.startupanimation.activity.DrawerActivity;
+import com.kubaspatny.startupanimation.data.NuntiusContentProvider;
+import com.kubaspatny.startupanimation.data.NuntiusDataContract;
+import com.kubaspatny.startupanimation.network.NetworkUtils;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Kuba on 30/8/2014.
@@ -57,6 +69,7 @@ public class GcmIntentService extends IntentService {
             } else if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType)) { // If it's a regular GCM message, do some work.
 
                 sendNotification(extras.getString("message"));
+                syncData();
                 Log.i(DEBUG_TAG, "Received: " + extras.toString());
 
             }
@@ -95,5 +108,37 @@ public class GcmIntentService extends IntentService {
         notification.defaults|= Notification.DEFAULT_VIBRATE;
 
         mNotificationManager.notify(NOTIFICATION_ID, notification);
+    }
+
+    private void syncData(){ //TODO: GET RID OF CODE DUPLICATION - here vs. that asynctask
+
+        try {
+            URL url = new URL("http://resttime-kubaspatny.rhcloud.com/rest/msg/latest");
+            String result = NetworkUtils.getHTTP(url);
+            Gson gson = new Gson();
+            Message[] messages = gson.fromJson(result, Message[].class);
+            List<String> text_list = new ArrayList<String>();
+
+            getContentResolver().delete(NuntiusContentProvider.CONTENT_URI, null, null); // delete previous messages
+
+            for(Message m : messages){
+                text_list.add(m.getmMessageBody());
+
+                // add message to DB;
+
+                ContentValues values = new ContentValues();
+                values.put(NuntiusDataContract.MessageEntry.COLUMN_NAME_TEXT, m.getmMessageBody());
+                values.put(NuntiusDataContract.MessageEntry.COLUMN_NAME_TIMESTAMP, m.getTimestampString());
+                getContentResolver().insert(NuntiusContentProvider.CONTENT_URI, values);
+
+            }
+
+        } catch(MalformedURLException e){
+            Log.e(DEBUG_TAG, e.getLocalizedMessage());
+        } catch(Exception e){
+            String message = (e.getLocalizedMessage() == null) ? "Error downloading messages." : e.getLocalizedMessage();
+            Log.e(DEBUG_TAG, message);
+        }
+
     }
 }

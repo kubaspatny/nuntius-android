@@ -22,7 +22,7 @@ public class NuntiusContentProvider extends ContentProvider {
 
     private static final String AUTHORITY = "com.kubaspatny.nuntius.nuntiuscontentprovider";
 
-    private static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + NuntiusDataContract.MessageEntry.TABLE_NAME);
+    public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + NuntiusDataContract.MessageEntry.TABLE_NAME);
 
     private static final UriMatcher uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
