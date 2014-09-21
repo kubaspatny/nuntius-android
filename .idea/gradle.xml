@@ -8,7 +8,7 @@
         <option name="modules">
           <set>
             <option value="C:\Users\Kuba\AndroidStudioProjects\StartUpAnimation" />
-            <option value="C:\Users\Kuba\AndroidStudioProjects\StartUpAnimation\startupanimation" />
+            <option value="C:\Users\Kuba\AndroidStudioProjects\StartUpAnimation\app" />
           </set>
         </option>
       </GradleProjectSettings>

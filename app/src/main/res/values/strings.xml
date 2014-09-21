@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Nuntius</string>
+    <string name="action_settings">Settings</string>
+    <string name="button_register">Register</string>
+    <string name="button_send">Send</string>
+    <string name="button_send_complete">Message sent</string>
+    <string name="button_send_sending">Sending message</string>
+    <string name="edittext_username">Username</string>
+    <string name="title_activity_send_message">New message</string>
+    <string name="edittext_newmessage">Enter your message</string>
+    <string name="action_checkGooglePlayServices">Check Google Play Services</string>
+    <string name="button_skip">Skip</string>
+    <string name="title_activity_messages">Latest Messages</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="empty_state_label">Pull to load messages</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="title_activity_drawer">DrawerActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="section_1">Messages</string>
+    <string name="section_2">Settings</string>
+    <string name="section_3">About</string>
+    <string name="navigation_drawer_open">Open drawer</string>
+    <string name="navigation_drawer_close">Close drawer</string>
+    <string name="app_name_short">Nuntius</string>
+    <string name="action_example">Placeholder Fragment</string>
+
+</resources>
