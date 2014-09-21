@@ -59,6 +59,15 @@
             android:launchMode="singleTop"
             android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
+
+        <provider
+            android:authorities="com.kubaspatny.nuntius.nuntiuscontentprovider"
+            android:name="com.kubaspatny.startupanimation.data.NuntiusContentProvider"
+            android:exported="false"
+            android:readPermission="true"
+            android:writePermission="true">
+        </provider>
+
     </application>
 
 </manifest>
