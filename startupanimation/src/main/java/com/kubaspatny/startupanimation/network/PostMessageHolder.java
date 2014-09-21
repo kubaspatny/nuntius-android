@@ -1,4 +1,4 @@
-package com.kubaspatny.startupanimation;
+package com.kubaspatny.startupanimation.network;
 
 import org.apache.http.NameValuePair;
 

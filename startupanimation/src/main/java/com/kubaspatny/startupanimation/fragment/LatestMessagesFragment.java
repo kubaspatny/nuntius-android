@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.kubaspatny.startupanimation.JSONUtil.Message;
-import com.kubaspatny.startupanimation.NetworkUtils;
+import com.kubaspatny.startupanimation.network.NetworkUtils;
 import com.kubaspatny.startupanimation.R;
 
 import java.net.MalformedURLException;

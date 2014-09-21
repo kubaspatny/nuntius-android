@@ -2,7 +2,6 @@ package com.kubaspatny.startupanimation.fragment;
 
 
 
-import android.app.Notification;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,8 +13,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.dd.processbutton.iml.ActionProcessButton;
-import com.kubaspatny.startupanimation.NetworkUtils;
-import com.kubaspatny.startupanimation.PostMessageHolder;
+import com.kubaspatny.startupanimation.network.NetworkUtils;
+import com.kubaspatny.startupanimation.network.PostMessageHolder;
 import com.kubaspatny.startupanimation.R;
 
 import org.apache.http.NameValuePair;

@@ -1,4 +1,4 @@
-package com.kubaspatny.startupanimation;
+package com.kubaspatny.startupanimation.gcm;
 
 import android.app.Activity;
 import android.content.ComponentName;

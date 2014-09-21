@@ -1,4 +1,4 @@
-package com.kubaspatny.startupanimation;
+package com.kubaspatny.startupanimation.network;
 
 import android.app.Activity;
 import android.content.Context;
@@ -71,6 +71,9 @@ public class NetworkUtils {
         String result = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
+
+            // do setConnectTimeout and setReadTimeout
+
             BufferedInputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
             result = inputStreamToString(in);

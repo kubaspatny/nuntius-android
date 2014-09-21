@@ -1,4 +1,4 @@
-package com.kubaspatny.startupanimation;
+package com.kubaspatny.startupanimation.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
@@ -16,10 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,7 +25,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.kubaspatny.startupanimation.activity.DrawerActivity;
+import com.kubaspatny.startupanimation.network.NetworkUtils;
+import com.kubaspatny.startupanimation.R;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -73,7 +71,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         if(!getRegistrationId().isEmpty()){
-            //Intent i = new Intent(MainActivity.this, SendMessageActivity.class);
             Intent i = new Intent(MainActivity.this, DrawerActivity.class);
             startActivity(i);
         }
@@ -162,7 +159,6 @@ public class MainActivity extends Activity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent i = new Intent(MainActivity.this, SendMessageActivity.class);
                 Intent i = new Intent(MainActivity.this, DrawerActivity.class);
                 startActivity(i);
             }

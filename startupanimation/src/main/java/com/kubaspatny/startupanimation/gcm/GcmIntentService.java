@@ -1,4 +1,4 @@
-package com.kubaspatny.startupanimation;
+package com.kubaspatny.startupanimation.gcm;
 
 import android.app.IntentService;
 import android.app.Notification;
@@ -6,14 +6,14 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.kubaspatny.startupanimation.R;
+import com.kubaspatny.startupanimation.activity.DrawerActivity;
 
 /**
  * Created by Kuba on 30/8/2014.
@@ -72,8 +72,6 @@ public class GcmIntentService extends IntentService {
     private void sendNotification(String msg) {
         mNotificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        //PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, SendMessageActivity.class), 0);
-
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_launcher)
@@ -83,7 +81,7 @@ public class GcmIntentService extends IntentService {
                         .setAutoCancel(true)
                         .setContentText(msg);
 
-        Intent resultIntent = new Intent(this, SendMessageActivity.class);
+        Intent resultIntent = new Intent(this, DrawerActivity.class);
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
         stackBuilder.addNextIntent(resultIntent);
