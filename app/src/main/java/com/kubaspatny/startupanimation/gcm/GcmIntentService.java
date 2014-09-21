@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
@@ -20,6 +21,7 @@ import com.kubaspatny.startupanimation.R;
 import com.kubaspatny.startupanimation.activity.DrawerActivity;
 import com.kubaspatny.startupanimation.data.NuntiusContentProvider;
 import com.kubaspatny.startupanimation.data.NuntiusDataContract;
+import com.kubaspatny.startupanimation.fragment.PrefsFragment;
 import com.kubaspatny.startupanimation.network.NetworkUtils;
 
 import java.net.MalformedURLException;
@@ -68,7 +70,12 @@ public class GcmIntentService extends IntentService {
 
             } else if (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType)) { // If it's a regular GCM message, do some work.
 
-                sendNotification(extras.getString("message"));
+                SharedPreferences settings = getSharedPreferences(PrefsFragment.PREFS_NAME, 0);
+
+                if(settings.getBoolean(PrefsFragment.SHOW_NOTIFICATIONS, true)){
+                    sendNotification(extras.getString("message"));
+                }
+
                 syncData();
                 Log.i(DEBUG_TAG, "Received: " + extras.toString());
 

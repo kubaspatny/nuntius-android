@@ -36,10 +36,11 @@
 
                 <ImageButton
                     android:id="@+id/empty_state_logo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_launcher"
-                    android:layout_marginBottom="8dp"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:background="@drawable/ic_messages_nores"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="-8dp"
                     />
 
                 <TextView
@@ -47,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/empty_state_label"
                     android:textColor="@color/grey"
-                    android:textSize="28sp"/>
+                    android:textSize="20dp"/>
 
             </LinearLayout>
 

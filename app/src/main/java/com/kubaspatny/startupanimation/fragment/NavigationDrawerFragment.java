@@ -78,17 +78,6 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
 
-//        mDrawerListView.setAdapter(new ArrayAdapter<String>(
-//                getActionBar().getThemedContext(),
-//                android.R.layout.simple_list_item_activated_1,
-//                android.R.id.text1,
-//                new String[]{
-//                        getString(R.string.section_1),
-//                        getString(R.string.section_2),
-//                        getString(R.string.section_3),
-//                }
-//        ));
-
         mDrawerListView.setAdapter(new DrawerAdapter(getActivity(),
                 new String[]{
                         getString(R.string.section_1),
@@ -97,7 +86,6 @@ public class NavigationDrawerFragment extends Fragment {
                 }
                 ));
 
-        //mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }
 
@@ -118,11 +106,8 @@ public class NavigationDrawerFragment extends Fragment {
         // set a custom shadow that overlays the main content when the drawer opens
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         mDrawerLayout.setBackgroundColor(getResources().getColor(R.color.white));
-        //mDrawerLayout.setScrimColor(getResources().getColor(R.color.white));
-        // set up the drawer's list view with items and click listener
 
         ActionBar actionBar = getActionBar();
-        //actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
 
         // ActionBarDrawerToggle ties together the the proper interactions
@@ -183,10 +168,6 @@ public class NavigationDrawerFragment extends Fragment {
 
     private void selectItem(int position) {
         mCurrentSelectedPosition = position;
-
-//        if (mDrawerListView != null) {
-//            mDrawerListView.setItemChecked(position, true);
-//        }
 
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);

@@ -10,10 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.kubaspatny.startupanimation.R;
+import com.kubaspatny.startupanimation.fragment.AboutFragment;
 import com.kubaspatny.startupanimation.fragment.LatestMessagesFragment;
 import com.kubaspatny.startupanimation.fragment.NavigationDrawerFragment;
 import com.kubaspatny.startupanimation.fragment.PagerFragment;
 import com.kubaspatny.startupanimation.fragment.PlaceholderFragment;
+import com.kubaspatny.startupanimation.fragment.PrefsFragment;
 import com.kubaspatny.startupanimation.fragment.SendMessageFragment;
 
 public class DrawerActivity extends FragmentActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks{
@@ -105,6 +107,12 @@ public class DrawerActivity extends FragmentActivity implements NavigationDrawer
         switch (position){
             case 0:
                 newFragment = PagerFragment.newInstance();
+                break;
+            case 1:
+                newFragment = PrefsFragment.newInstance();
+                break;
+            case 2:
+                newFragment = AboutFragment.newInstance();
                 break;
             default:
                 newFragment = PlaceholderFragment.newInstance(position + 1);

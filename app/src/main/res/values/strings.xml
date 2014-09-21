@@ -26,5 +26,9 @@
     <string name="navigation_drawer_close">Close drawer</string>
     <string name="app_name_short">Nuntius</string>
     <string name="action_example">Placeholder Fragment</string>
+    <string name="checkbox_gcm">checkbox_gcm</string>
+    <string name="checkbox_gcm_title">Receive Notifications</string>
+    <string name="checkbox_gcm_summary">Show GCM Notifications</string>
+    <string name="about_text">Nuntius was created by Kuba Spatny. It will be open-sourced on GitHub. This project contains all the important parts of an app that needs to communication with server (back end) and sync its data.</string>
 
 </resources>
