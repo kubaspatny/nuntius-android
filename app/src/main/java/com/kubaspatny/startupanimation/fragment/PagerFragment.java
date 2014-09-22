@@ -55,7 +55,7 @@ public class PagerFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((DrawerActivity) activity).onSectionAttached(3);
+        ((DrawerActivity) activity).onSectionAttached(1); // 1 == MESSAGES
 
     }
 

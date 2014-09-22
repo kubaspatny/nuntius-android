@@ -1,5 +1,6 @@
 package com.kubaspatny.startupanimation.fragment;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.AsyncTask;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.kubaspatny.startupanimation.JSONUtil.Message;
+import com.kubaspatny.startupanimation.activity.DrawerActivity;
 import com.kubaspatny.startupanimation.data.NuntiusContentProvider;
 import com.kubaspatny.startupanimation.data.NuntiusDataContract;
 import com.kubaspatny.startupanimation.network.NetworkUtils;
@@ -130,14 +132,11 @@ public class LatestMessagesFragment extends Fragment implements SwipeRefreshLayo
 
     // ---------------------------------------------------------------------------
 
-
     @Override
-    public void onStop() {
-        super.onStop();
-
+    public void onDestroyView() {
+        super.onDestroyView();
         getActivity().getSupportLoaderManager().destroyLoader(0);
         //TODO: IS THIS A GOOD PRACTISE OR NOT?
-
     }
 
     private class LoadMessagesAsyncTask extends AsyncTask<Void, Void, ArrayAdapter<String>> {

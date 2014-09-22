@@ -60,7 +60,6 @@ public class PlaceholderFragment extends Fragment{
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         ((DrawerActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
-
     }
 
 }

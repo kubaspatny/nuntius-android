@@ -18,6 +18,8 @@ import com.kubaspatny.startupanimation.fragment.PlaceholderFragment;
 import com.kubaspatny.startupanimation.fragment.PrefsFragment;
 import com.kubaspatny.startupanimation.fragment.SendMessageFragment;
 
+// TODO: When you open the app (and it wasn't running before) the action bar title is DrawerActivity instead Messages
+
 public class DrawerActivity extends FragmentActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 
     /**
@@ -44,6 +46,7 @@ public class DrawerActivity extends FragmentActivity implements NavigationDrawer
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 
+        restoreActionBar();
 
     }
 
@@ -51,12 +54,12 @@ public class DrawerActivity extends FragmentActivity implements NavigationDrawer
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-//        if (!mNavigationDrawerFragment.isDrawerOpen()) {
-//            // Only show items in the action bar relevant to this screen
-//            // if the drawer is not showing. Otherwise, let the drawer
-//            // decide what to show in the action bar.
-//
-//
+        if (!mNavigationDrawerFragment.isDrawerOpen()) {
+            // Only show items in the action bar relevant to this screen
+            // if the drawer is not showing. Otherwise, let the drawer
+            // decide what to show in the action bar.
+
+
 //            int menu_res;
 //
 //            switch(mFragmentId){
@@ -74,11 +77,11 @@ public class DrawerActivity extends FragmentActivity implements NavigationDrawer
 //            }
 //
 //            getMenuInflater().inflate(menu_res, menu);
-//
-//
-//            restoreActionBar();
-//            return true;
-//        }
+
+
+            restoreActionBar();
+            return true;
+        }
         
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.drawer, menu);
@@ -139,6 +142,7 @@ public class DrawerActivity extends FragmentActivity implements NavigationDrawer
                 mTitle = getString(R.string.section_3);
                 break;
         }
+
     }
 
     public void restoreActionBar() {

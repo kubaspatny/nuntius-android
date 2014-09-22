@@ -1,5 +1,6 @@
 package com.kubaspatny.startupanimation.fragment;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.kubaspatny.startupanimation.R;
+import com.kubaspatny.startupanimation.activity.DrawerActivity;
 
 /**
  * Created by Kuba on 21/9/2014.
@@ -52,4 +54,11 @@ public class PrefsFragment extends Fragment {
 
         return rootView;
     }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        ((DrawerActivity) activity).onSectionAttached(2); // 2 == SETTINGS
+    }
+
 }
